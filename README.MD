@@ -1,0 +1,1 @@
+Oto mój pierwszy projekt w życiu, w którym będę używał GIT'a oraz wirtualne środowska pipenv.
