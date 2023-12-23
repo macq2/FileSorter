@@ -1,1 +1,7 @@
+docutils==0.20.1
+FileSorter==0.2.0
+fire==0.5.0
 pathlib==1.0.1
+simplejson==3.19.2
+six==1.16.0
+termcolor==2.4.0
