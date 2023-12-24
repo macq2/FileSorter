@@ -1,16 +1,18 @@
+from File_Sorter import FileSorter
 import argparse
 from pathlib import Path
 import tkinter as tk
 from tkinter import filedialog
 import logging
-import FileSorter
 import sys
+
+
 
 def is_valid_directory(directory):
     return Path(directory).is_dir()
 
 def run_file_sorter(directory):
-    sorter = FileSorter.FileSorter(directory)
+    sorter = FileSorter(directory)
     sorter.sortingFiles()
     sorter.creatingFolders()
     sorter.movingFiles()
@@ -28,6 +30,7 @@ def get_directory_from_user():
 def main(directory=None):
     if not directory:
         directory = get_directory_from_user()
+        
     if not is_valid_directory(directory):
         logging.error(f"Error {directory} is not a valid directory")
         return
