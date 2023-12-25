@@ -1,11 +1,11 @@
-from File_Sorter import FileSorter
 import argparse
-from pathlib import Path
 import tkinter as tk
-from tkinter import filedialog
 import logging
 import sys
+from tkinter import filedialog
+from pathlib import Path
 
+from File_Sorter import FileSorter
 
 
 def is_valid_directory(directory):
@@ -13,7 +13,7 @@ def is_valid_directory(directory):
 
 def run_file_sorter(directory):
     sorter = FileSorter(directory)
-    sorter.sortingFiles()
+    sorter.sorting_files()
     sorter.creatingFolders()
     sorter.movingFiles()
 
@@ -21,6 +21,7 @@ def get_directory_from_user():
     root = tk.Tk()
     root.withdraw()
     directory = filedialog.askdirectory(title='Select a direcetory containing files to be sorted', initialdir=Path(r'C:\Users\mjedr\Desktop'))
+
     if not directory:
         logging.error('No directory selected.')
         sys.exit()
@@ -39,6 +40,7 @@ def main(directory=None):
         run_file_sorter(directory)
     except Exception as e:
         logging.error(f"An error occured: {e}")
+    
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Sort and organize files in a folder')
