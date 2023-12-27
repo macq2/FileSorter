@@ -5,6 +5,7 @@ from datetime import datetime
 from collections import defaultdict
 from pathlib import Path
 
+
 class FileSorter():
     """Class for sorting and organizing files."""
 
@@ -22,6 +23,7 @@ class FileSorter():
 
         logging.info('Sorting file...')
         all_files = defaultdict(dict)
+
         for file_path in Path(self.download_path).iterdir():
             if file_path.is_file():
                 all_files[file_path.suffix.upper()][file_path.stem] = {}
@@ -40,16 +42,19 @@ class FileSorter():
         for ext in self.all_files.keys():
             for fname in self.all_files[ext].values():
                 date_dict = fname['date'].year
+
                 if ext[1:] not in folder_date[date_dict]:
                     folder_date[date_dict].append(ext[1:])
 
         for date in folder_date:
             folder_path_dates = Path(self.download_path) / str(date)
+            
             if not folder_path_dates.exists():
                 folder_path_dates.mkdir(parents=True, exist_ok=False)
 
             for file_ext in folder_date[date]:
                 folder_path_extension = folder_path_dates / str(file_ext)
+                
                 if not folder_path_extension.exists():
                     folder_path_extension.mkdir(parents=True, exist_ok=False)               
 
