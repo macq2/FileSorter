@@ -2,3 +2,4 @@ Pipfile
 Pipfile.lock
 __pycache__
 data.json
+plot.png
